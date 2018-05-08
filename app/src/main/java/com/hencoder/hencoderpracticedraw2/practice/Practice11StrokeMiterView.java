@@ -9,6 +9,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 public class Practice11StrokeMiterView extends View {
+
     Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     Path path = new Path();
 
@@ -39,15 +40,19 @@ public class Practice11StrokeMiterView extends View {
         canvas.save();
 
         canvas.translate(100, 100);
-        // MITER 值：1
+        // MITER 值：1 miter limit 的默认值是 4，对应的是一个大约 29° 的锐角
+        // 默认情况下，大于这个角的尖角会被保留，而小于这个夹角的就会被「削成平头」
+        paint.setStrokeMiter(1);
         canvas.drawPath(path, paint);
 
         canvas.translate(300, 0);
         // MITER 值：2
+        paint.setStrokeMiter(2);
         canvas.drawPath(path, paint);
 
         canvas.translate(300, 0);
         // MITER 值：5
+        paint.setStrokeMiter(5);
         canvas.drawPath(path, paint);
 
         canvas.restore();
