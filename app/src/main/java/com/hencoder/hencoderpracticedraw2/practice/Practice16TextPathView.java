@@ -9,6 +9,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 public class Practice16TextPathView extends View {
+
     Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     Paint pathPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     Path textPath = new Path();
@@ -39,7 +40,7 @@ public class Practice16TextPathView extends View {
         super.onDraw(canvas);
 
         canvas.drawText(text, 50, 200, paint);
-
+        paint.getTextPath(text, 0, text.length(), 50, 400, textPath);
         canvas.drawPath(textPath, pathPaint);
     }
 }
